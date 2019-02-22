@@ -1,0 +1,25 @@
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+# Had to remove because of jekyll 3 compatibility
+# relative_permalinks: true
+
+# Setup
+title:               Tópicos Especiais em Algoritmos
+tagline:             'Ciência da Computação'
+description:         'Material auxiliar da disciplina Tópicos Especiais em Algoritmos do curso superior de Ciência da Computação do IFB-Taguatinga.'
+url:                 http://danielsaad.com/tea-ifb-bcc
+baseurl:             ''
+paginate:            5
+
+syntax_highlighter: pygments
+# About/contact
+author:
+  name:              Mark Otto
+  url:               https://twitter.com/mdo
+  email:             markdotto@gmail.com
+
+# Custom vars
+version:             1.0.0
+plugins: [jekyll-paginate]
