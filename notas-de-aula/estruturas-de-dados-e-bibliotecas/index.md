@@ -3,7 +3,13 @@ layout: page
 title: 'Estruturas de Dados e Bibliotecas'
 ---
 
+{% include mathjax.html %}
+
+{:toc}
+
 Estruturas de dados proveem meios de organizar e manipular informações de maneira eficiente. Para resolver problemas de uma maneira rápida, fazemos o uso de estruturas de dados adequadas. É papel de um bom programados saber selecionar as melhores estruturas que se encaixam nas soluções propostas. A seguir apresentaremos uma visão sucinta de cada uma delas.
+
+
 
 
 ## Vetores
@@ -32,6 +38,23 @@ Através do cabeçalho `<vector>` é possível utilizar esta estrutura de dados 
 {% endhighlight %}
 
 Note que é possível utilizar a notação padrão de colchetes nesta estrutura.
+
+## Heap
+
+Uma Heap é uma estrutura de dados em forma de árvore binária completa que possui a seguinte propriedade: 
+- A raiz tem precedência sobre os seus dois filhos.
+- A árvore com raiz no filho da esquerda é uma heap.
+- A árvore com raiz no filho da direita é uma heap.
+
+A figura a seguir ilustra uma Heap.
+
+![Heap](figures/heap-1.png)
+
+Como se trata de uma árvore binária completa, é possível representar uma Heap através de um vetor. A navegação desta árvore virtual através de uma aritmética simples. Se um nó ocupa o índice `i`do vetor, temos:
+
+- O pai ocupa a posição `\((i-1)/2\)`.
+- O filho da esquerda ocupa a posição $((i+1)*2\)$.
+- O filho da direita ocupa a posição \((i+2)*2\).
 
 ## Pilhas
 
@@ -63,7 +86,53 @@ Ao contrário das Pilhas, Filas são estruturas de dados que seguem a ordem FIFO
 
 Filas de prioridade não seguem a ordem FIFO. Elas procuram estabelecer uma prioridade entre os elementos de forma que, independentemente de quando foi inserido, o elemento de maior prioridade deve ser retirado.
 
-Internamente, esta estrutura de dados geralmente é implementada através de uma **Heap**.
+Internamente, esta estrutura de dados geralmente é implementada através de uma **Heap** e está disponível através do cabeçalho `<queue>`. Podemos citar como exemplos os métodos:
+
+- `empty()`: verifica se a fila de prioridade está vazia;
+- `size()`: retorna o tamanho da fila de prioridade;
+- `top()`: retorna o elemento de maior prioridade;
+- `push()`: insere um elemento na fila de prioridade;
+- `pop()`: remove o elemento de maior prioridade.
+
+O código abaixo mostra uma situação hipotética em que várias pessoas são inseridas em uma fila de prioridade. Neste caso, definimos através do operador `<` uma relação de ordem entre as pessoas para que duas pessoas possam ser comparadas e avaliadas de acordo com a sua prioridade. No caso, pessoas mais velhas tem mais prioridade do que pessoas mais novas e que, quando as pessoas tem a mesma idade, a com menor renda mensal tem prioridade.
+
+{% highlight cpp %}
+{% include_relative src/pqueue-operations.cpp %}
+{% endhighlight %}
+
+Considere a seguinte entrada:
+
+| Nome    | Idade | Renda Mensal |
+|---------|-------|--------------|
+| Daniel  |   30  |    1000.0    |
+| Daniela |   30  |     400.0    |
+| José    |   50  |    2000.0    |
+| Pablo   |   80  |    6000.0    |
+| Carlos  |   30  |     500.0    |
+
+O programa selecionaria as seguintes pessoas de acordo com a prioridade pré-definida:
+
+{% highlight plain %}Pablo
+80
+6000
+
+Jose
+50
+2000
+
+Daniela
+30
+400
+
+Carlos
+30
+500
+
+Daniel
+20
+1000
+
+{% endhighlight %}
 
 
 ## Deques
