@@ -13,7 +13,6 @@ url:                 https://danielsaad.com/TEA-BCC-IFB
 # url: http://localhost
 paginate:            5
 mathjax: true
-markdown: kramdown
 syntax_highlighter: pygments
 # About/contact
 author:
@@ -25,3 +24,7 @@ author:
 version:             1.0.0
 plugins: [jekyll-paginate]
 
+markdown: kramdown
+
+kramdown:
+  parse_block_html: true
