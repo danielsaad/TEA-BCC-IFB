@@ -3,7 +3,7 @@ layout: page
 title: 'Estruturas de Dados e Bibliotecas'
 ---
 
-{% include mathjax_support.html %}
+
 
 * TOC
 {:toc}
@@ -625,6 +625,12 @@ Com o disposto acima, para calcular $sum(1,i)$ basta realizar o seguinte procedi
 {% include_relative src/ft-sum.cpp %}
 {% endhighlight %}
 
+Para calcular $sum(i,j)$, basta aplicar o procedimento anterior com parâmetros $j$ e $i-1$ e subtrair um do outro, conforme o código abaixo: 
+
+{% highlight cpp %}
+{% include_relative src/ft-sum-2.cpp %}
+{% endhighlight %}
+
 ### Atualizando Valores
 
 Para que uma atualização de `v[i]` seja refletida em `ft`, é preciso atualizar
@@ -636,6 +642,16 @@ Assim só é necessário atualizar os nós que envolvem o índice $i$, o que pod
 {% endhighlight %}
 
 Tomando o índice $i=5$ como exemplo, teríamos que atualizar os seguintes índices de `ft`: `101` \(3\), `110` \(6\) e `1000` \(8\).
+
+### Implementação
+
+Consolidando todos os conceitos, temos o seguinte resultado.
+Podemos ver que a implementação é bem compacta e mais simples do que a de uma árvore de segmentos.
+
+{% highlight cpp %}
+{% include_relative src/fenwick-tree.cpp %}
+{% endhighlight %}
+
 
 <!-- ## Hashing  -->
  
