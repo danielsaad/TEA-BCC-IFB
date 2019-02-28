@@ -9,8 +9,8 @@ permalink:           pretty
 title:               Tópicos Especiais em Algoritmos
 tagline:             'Ciência da Computação'
 description:         'Material auxiliar da disciplina Tópicos Especiais em Algoritmos do curso superior de Ciência da Computação do IFB-Taguatinga.'
-url:                 https://danielsaad.com/TEA-BCC-IFB
-# url: http://localhost
+# url:                 https://danielsaad.com/TEA-BCC-IFB
+url: http://localhost
 paginate:            5
 mathjax: true
 syntax_highlighter: pygments

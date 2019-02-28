@@ -451,4 +451,5 @@ a.pagination-item:hover {
     padding: 1.5em;
     /* list-style: decimal; */
     display: inline-block;
+    font-size:small;
 }
