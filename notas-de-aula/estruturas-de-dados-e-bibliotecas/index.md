@@ -335,7 +335,7 @@ Para acessar o valor de um bit em específico, usamos os operadores bit-a-bit em
 Estes operadores aplicam uma operação lógica em um inteiro, no caso de um operador unário, ou entre dois inteiros, no caso de um operador binário.
 
 - Operador unário: `~` (NOT).
-- Operadores binários: `&` \(AND\), `|` \(OR\), `^` \(XOR\), `<<` \(Shift left\) e `>>` \(Shift right\).  
+- Operadores binários: `&` (AND), `|` (OR), `^` (XOR), `<<` (Shift-left) e `>>` (Shift-right).  
 
 
 Os operadores de `>>` e `<<` servem para deslocar os bits posições à esquerda ou a direita.
@@ -641,7 +641,7 @@ Assim só é necessário atualizar os nós que envolvem o índice $i$, o que pod
 {% include_relative src/ft-update.cpp %}
 {% endhighlight %}
 
-Tomando o índice $i=5$ como exemplo, teríamos que atualizar os seguintes índices de `ft`: `101` \(3\), `110` \(6\) e `1000` \(8\).
+Tomando o índice $i=5$ como exemplo, teríamos que atualizar os seguintes índices de `ft`: `101` (3), `110` (6) e `1000` (8).
 
 ### Implementação
 
@@ -652,6 +652,9 @@ Podemos ver que a implementação é bem compacta e mais simples do que a de uma
 {% include_relative src/fenwick-tree.cpp %}
 {% endhighlight %}
 
+### Complexidade
+
+Como as árvores de Fenwick possuem altura no máximo $O(\lg n)$ as operações de $sum$ e $update$ são executadas neste tempo.
 
 <!-- ## Hashing  -->
  

@@ -50,8 +50,8 @@ int main(){
         le_pessoa(p);
         v.push_back(p);
     }
-    // Ordenação de acordo com um functor
-    sort(v.begin(),v.end(),cmp_pessoa());
+    // Ordenação de acordo com uma função.
+    sort(v.begin(),v.end(),cmp_pessoa);
     // O vetor é ordenado e as pessoas são impressas.
     for(auto p: v){
         imprime_pessoa(p);
