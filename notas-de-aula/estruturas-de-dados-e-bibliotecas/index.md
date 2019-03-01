@@ -101,12 +101,16 @@ Em vetores ordenados é possível buscar elementos de maneira eficiente do que e
 
 Desta forma, caso $x$ ocorra em um vetor `v`, temos que de `lower_bound` até uma posição antes de `upper_bound`, concentram-se todas as ocorrências de $x$.
 
-O exemplo a seguir de (cplusplus)[http://www.cplusplus.com/reference/algorithm/upper_bound/] ilustra os métodos.
+O exemplo a seguir de [cplusplus](http://www.cplusplus.com/reference/algorithm/upper_bound/) ilustra os métodos apresentados.
 
 {% highlight cpp %}
 {% include_relative src/search-bound.cpp %}
 {% endhighlight %}
 
+
+#### Complexidade 
+
+Internamente estes procedimentos realizam uma busca binária. Por esta razão, tanto `lower_bound` quanto `upper_bound` levam tempo $O(\lg n)$.
 
 ## Heaps
 
