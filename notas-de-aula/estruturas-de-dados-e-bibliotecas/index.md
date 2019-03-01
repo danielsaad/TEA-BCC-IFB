@@ -565,15 +565,15 @@ Por se tratar de uma árvore balanceada, todas as operações que envolvem uma �
 
 ## Árvores de Fenwick
 
-As árvores de Fenwick foram propostas por Peter Fenwick na década de 90 e são muito utilizadas no problema de cálculo de frequências cumulativas em um cenário dinâmico, que dado um vetor `v` (com base em $1$) e um intervalo `[1,i]`, consiste em determinar a soma dos valores `v[k]` $1 \leq k \leq i$, também denotado por $sum(i)$. Cabe ressaltar que estes valores podem ser alterados no decorrer do tempo, mudando o resultado da soma cumulativa da mesma consulta.
+As árvores de Fenwick foram propostas por Peter Fenwick na década de 90 e são muito utilizadas no problema de cálculo de frequências cumulativas em um cenário dinâmico, que dado um vetor `v` (com base em $1$) e um intervalo `[1,i]`, consiste em determinar a soma dos valores `v[k]` $1 \leq k \leq i$, também denotado por $sum(i)$. Uma variação deste problema, consiste em determinar a soma de um intervalo $[i,j]$, denotada por $sum(i,j)$. Cabe ressaltar que os valores de `v` podem ser alterados no decorrer do tempo, alterando o resultado da soma cumulativa.
 
 
-Claramente esta consulta pode ser resolvida com uma inspeção linear no intervalo, contudo, ela teria complexidade linear no tamanho do intervalo e, dependendo do número de consultas, isso seria inviável.
+Claramente, consultas de $sum$ podem ser resolvidas com uma inspeção linear no intervalo, contudo, ela teria complexidade linear no tamanho do intervalo e, dependendo do número de consultas, isso seria inviável.
 
 Uma possível solução para resolver este problema é adaptar as Árvores de Segmentos vistas anteriormente, contudo, as Árvores de Fenwick são consideradas estruturas mais simples e fáceis de implementar. 
 
 
-Tomando a abordagem presente em ([Topcoder](https://www.topcoder.com/community/competitive-programming/tutorials/binary-indexed-trees/)), considere um vetor `v` indexado em $1$. A ideia por trás de uma Fenwick Tree é representá-la através de um vetor `ft` de tal forma que `ft[i]` armazena a soma acumulada de `v` no intervalo $[i-2^lsb(i)+1,i]$ em que $lsb(i)$ corresponde ao índice do bit $1$ menos significativo de $v[i]$. A Tabela a seguir ilustra isso, em que `v` é o vetor original, `c` é a frequência cumulativa e `ft` é a árvore de fenwick. 
+Tomando a abordagem presente em ([Topcoder](https://www.topcoder.com/community/competitive-programming/tutorials/binary-indexed-trees/)), considere um vetor `v` indexado em $1$. A ideia por trás de uma Fenwick Tree é representá-la através de um vetor `ft` de tal forma que `ft[i]` armazena a soma acumulada de `v` no intervalo $[i-2^{lsb(i)}+1,i]$ em que $lsb(i)$ corresponde ao índice do bit $1$ menos significativo de $v[i]$. A Tabela a seguir ilustra isso, em que `v` é o vetor original, `c` é a frequência cumulativa e `ft` é a árvore de fenwick. 
 
 | Índice | 0 | 1 | 2 | 3 | 4  | 5  | 6  | 7  | 8  | 9  | 10 |
 |--------|---|---|---|----|----|----|----|----|----|----|
