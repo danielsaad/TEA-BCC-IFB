@@ -18,7 +18,7 @@ int main(){
     // imprima o topo da pilha
     // e remova o elemento do topo 
     while(!stck.empty()){
-        cout << stck.top();
+        cout << stck.top() << endl;
         stck.pop();
     }
     return 0;	

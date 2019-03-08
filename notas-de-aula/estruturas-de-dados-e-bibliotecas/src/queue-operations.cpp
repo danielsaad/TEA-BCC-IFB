@@ -19,7 +19,7 @@ int main(){
     // imprima a frente da fila
     // e remova o elemento da frente. 
     while(!q.empty()){
-        cout << q.front();
+        cout << q.front() << endl;
         q.pop();
     }
     return 0;	
