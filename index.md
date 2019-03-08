@@ -20,7 +20,7 @@ title: Home
 
 ## 08/03/2019
 
-Prezados, já temos uma avaliação de Estruturas de Dados disponível  neste [link][https://a2oj.com/contest?ID=39046], que concentra os problemas:
+Prezados, já temos uma avaliação de Estruturas de Dados disponível  neste [link](https://a2oj.com/contest?ID=39046), que concentra os problemas:
 
 - 1203 Argus: Filas de Prioridade (Obrigatório);
 - 11926 - Multitasking: Vetores de Bits;
