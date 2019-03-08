@@ -24,7 +24,7 @@ Prezados, já temos uma avaliação de Estruturas de Dados disponível  neste [l
 
 - 1203 Argus: Filas de Prioridade (Obrigatório);
 - 11926 - Multitasking: Vetores de Bits;
-- 10264 - The Most Potent Corner (S) : Vetores de Bits (Obrigatório);
+- 10264 - The Most Potent Corner: Vetores de Bits (Obrigatório);
 - 10172 - The Lonesome Cargo Distributor: Filas e Pilhas (Obrigatório);
 - 12207 - That is Your Queue: Filas e Deques (Obrigatório);
 - 10901 - Ferry Loading III: Simulação Fila.
