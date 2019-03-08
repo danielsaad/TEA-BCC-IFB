@@ -31,8 +31,17 @@ Prezados, já temos uma avaliação de Estruturas de Dados disponível  neste [l
 
 Além de submeter as suas soluções pela plataforma A2, vocês deverão entregá-las via Edmodo para que eu possa analisá-las individualmente.
 
+------------------
 
+Uma vez criada a conta no [A2](www.a2oj.com), é necessário inserir os IDs dos outros juízes no seu perfil para que ele consiga obter as submissões feitas nestes outros juízes.
 
+O ID do URI é obtido ao logar em sua conta URI, clicar em perfil e pegar a sequência de inteiros disponível na URL, conforme ilustrado pela figura abaixo, em que o ID do usuário é 88888.
+
+![ID URI](assets/id-uri.png)
+
+Por usa vez, o ID do UVA é obtido ao logar em sua conta UVA, clicar em MY account e finalmente obter o campo *Online Judge ID*, conforme ilustrado pela figura abaixo, em que o ID é 77777.
+
+![ID URI](assets/id-uva.png)
 
 
 ## 01/03/2019
