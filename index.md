@@ -6,28 +6,26 @@ title: Home
 # Avisos
 
 
-<!-- 
-10138 CDVII: Mapeamento
-12592 - Slogan Learning of Princess: Mapeamento
-1203 Argus: Priority_queue (S)
-11926 - Multitasking: Bitmap (S)
-10264 - The Most Potent Corner (S) : Bitmap
-10172 - The Lonesome Cargo Distributor: Filas e Pilhas (S)
-12207 - That is Your Queue: Filas e Deques (S)
-10901 - Ferry Loading III (Simulação Fila)
+## 15/03/2019
 
--->
+Prezados, a segunda avaliação de Estruturas de Dados está disponível neste [link](https://a2oj.com/contest?ID=39107), que envolve os problemas:
+
+- UVA 10138: Mapeamento (Obrigatório)
+- UVA 12592: Mapeamento
+- URI 1356: Segment Trees (Obrigatório)
+- URI 1500: Fenwick Trees (Obrigatório)
+
 
 ## 08/03/2019
 
 Prezados, já temos uma avaliação de Estruturas de Dados disponível  neste [link](https://a2oj.com/contest?ID=39046), que concentra os problemas:
 
-- 1203 Argus: Filas de Prioridade (Obrigatório);
-- 11926 - Multitasking: Vetores de Bits;
-- 10264 - The Most Potent Corner: Vetores de Bits (Obrigatório);
-- 10172 - The Lonesome Cargo Distributor: Filas e Pilhas (Obrigatório);
-- 12207 - That is Your Queue: Filas e Deques (Obrigatório);
-- 10901 - Ferry Loading III: Simulação Fila.
+- UVA 1203 Argus: Filas de Prioridade (Obrigatório);
+- UVA 11926 - Multitasking: Vetores de Bits;
+- UVA 10264 - The Most Potent Corner: Vetores de Bits (Obrigatório);
+- UVA 10172 - The Lonesome Cargo Distributor: Filas e Pilhas (Obrigatório);
+- UVA 12207 - That is Your Queue: Filas e Deques (Obrigatório);
+- UVA 10901 - Ferry Loading III: Simulação Fila.
 
 Além de submeter as suas soluções pela plataforma A2, vocês deverão entregá-las via Edmodo para que eu possa analisá-las individualmente.
 
