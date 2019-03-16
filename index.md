@@ -12,9 +12,10 @@ Prezados, a segunda avaliação de Estruturas de Dados está disponível neste [
 
 - UVA 10138: Mapeamento (Obrigatório)
 - UVA 12592: Mapeamento
-- URI 1356: Segment Trees (Obrigatório)
-- URI 1500: Fenwick Trees (Obrigatório)
-
+- URI 1356: Segment Trees
+- URI 2531: Segment Trees (Obrigatório)
+- URI 1804: Fenwick Trees (Obrigatório)
+- URI 1500: Fenwick Trees
 
 ## 08/03/2019
 
