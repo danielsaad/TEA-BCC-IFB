@@ -6,6 +6,19 @@ title: Home
 # Avisos
 
 
+## 29/03/2019
+
+Prezados, a avaliação de **Paradigmas - Busca Completa** está disponível neste [link](https://a2oj.com/contest?ID=39263). Ela envolve os problemas
+
+- UVA 10181: Backtracking (Obrigatório)
+- UVA 725: Busca Completa
+- UVA 441: Busca Completa
+- UVA 11565: Busca Completa
+- UVA 11742: Busca Completa
+- UVA 750: Backtracking
+- II Maratona de Programação do IFB (Dominós).
+- III Maratona de Programação do IFB (Natal Palindrômico)
+
 ## 15/03/2019
 
 Prezados, a segunda avaliação de Estruturas de Dados está disponível neste [link](https://a2oj.com/contest?ID=39107), que envolve os problemas:
