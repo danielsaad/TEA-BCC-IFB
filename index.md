@@ -15,9 +15,10 @@ Prezados, a avaliação de **Paradigmas - Busca Completa** está disponível nes
 - UVA 441: Busca Completa
 - UVA 11565: Busca Completa
 - UVA 11742: Busca Completa
-- UVA 750: Backtracking
-- II Maratona de Programação do IFB (Dominós).
-- III Maratona de Programação do IFB (Natal Palindrômico)
+- UVA 12455: Busca Completa
+- UVA 750 : Backtracking
+- II Maratona de Programação do IFB - Dominó: Busca Completa
+- III Maratona de Programação do IFB Natal Palindrômico: Busca Completa
 
 ## 15/03/2019
 

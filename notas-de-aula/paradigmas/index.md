@@ -40,7 +40,7 @@ Ou seja, no máximo existe apenas $924$ possibilidades de acordo com as restriç
 {% include_relative src/uva441.cpp %}
 {% endhighlight %}
 
-Uma estratégia parecida pode ser adotada no problema ([UVA 11565])(https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=2612), que consiste em, dados três inteiros $A$, $B$ e $C$ ($1\leq A,B,C \leq 10^5$), encontrar valores distintos $x$,$y$ e $z$ que satisfaçam simultâneamente as três equações abaixo:
+Uma estratégia parecida pode ser adotada no problema [(UVA 11565)](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=2612), que consiste em, dados três inteiros $A$, $B$ e $C$ ($1\leq A,B,C \leq 10^5$), encontrar valores distintos $x$,$y$ e $z$ que satisfaçam simultâneamente as três equações abaixo:
 
 $$\begin{eqnarray}
 x + y + z & = &  A\\
