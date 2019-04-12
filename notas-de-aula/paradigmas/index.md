@@ -126,8 +126,120 @@ O principal problema de uma solução baseada em busca completa é justamente o 
 
 ## Divisão e Conquista
 
+[Slides](assets/Busca Binária.pdf)
+
 ## Algoritmos Gulosos
 
+
+Um algoritmo é dito **guloso** se ele faz uma escolha local ótima a cada passo esperando chegar na solução ótima global. Em alguns casos, os algoritmos gulosos funcionam bem: a solução é curta e eficiente. Em muitos outros casos, a solução gulosa não funciona.
+
+Para um algoritmo guloso funcionar, ele deve:
+
+1. Possui subestrutura ótima:
+   - A solução ótima do problema pode ser decomposta em soluções ótimas de subproblemas.
+2. Ele tem que ter a propriedade gulosa:
+   - Se ao realizar uma escolha gulosa e proceder a resolver o problema que restou, chegamos na solução ótima, então existe a propriedade gulosa.
+
+Vamos tomar alguns exemplos para ilustrar esse problema.
+
+### Problema do Troco
+
+Seja uma quantia $V$ e uma lista de $n$ moedas, cada moeda possui um valor $value[i]$ em que $i\in [0,n-1]$.
+
+A estratégia gulosa é: utilize a moeda com maior valor possível que é menor do que a quantia $V$ e continue com o subproblema $V-x$ em que $x$ é o valor da moeda utilizada.
+
+Por exemplo, se $value={25,10,5,1}$ e $V=42$, então a estratégia faria:
+
+- $V = 42$: utilize uma moeda de $25$, resta $17$.
+- $V=17$: utilize uma moeda de $10$, resta $7$.
+- $V=7$: utilize uma moeda de $5$, resta $2$.
+- $V=2$: utilize uma moeda de $1$, resta $1$.
+- $V=1$: utilize uma moeda de $1$, fim.
+
+Essa estratégia, para este sistema de moedas, leva a uma solução ótima, com um total de $5$ moedas.
+
+Analisando melhor o problema, temos que:
+
+1. Ele tem subestrutura ótima:
+  - Para resolver o problema com $V=42$ utilizamos a solução de quando $V=17$, uma vez que as moedas $10+5+1+1$ foram utilizadas.
+2. Ele tem a propriedade gulosa: para cada quantidade $V$, podemos escolher a maior moeda que é menor ou igual a $V$ que nos levará a solução ótima global.
+
+A estratégia gulosa nos fornece um sistema muito simples, mas ela só funciona no caso de um sistema canônico de moedas, que é o caso da maioria dos sistemas financeiros. Caso as moedas disponíveis fossem $value = {4,3,1}$ e o valor a ser pago fosse $V=6$, a estratégia gulosa nos daria $3$ moedas enquanto a solução ótima consiste de duas moedas de $3$.
+
+Para resolver o problema geral do troco, em que o sistema de moedas não necessáriamente é canônico, pode-se utilizar a abordagem de **Programação Dinâmica**.
+
+
+### UVa 410 -  Station Balance
+
+Tome o problema [UVa 410](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=351). Existem $1\leq C \leq 5$ câmaras que podem armazenar $0$,$1$ ou $2$ espécimes, $1 \leq S \leq 2C$ espécimes e uma lista $M$ da massa de cada uma das $S$ espécimes. 
+O problema consiste em determinar qual câmara deve armazenar cada espécime para minimizar o desequilíbrio. 
+
+Este é um problema conhecido como **balanceamento de carga**, muito utilizado no contexto de Máquinas Virtuais e Computação em Nuvem. Basicamente, seja: $A$ a média da massa considerando as $C$ câmaras:
+
+$$ A = \sum_{j=1}^{S} \frac{M_j}{C} $$
+
+O objetivo é minimizar 
+
+$$\sum_{i=1}^{C} |X_i -A|$$
+
+Em que $X_i$ é a massa total presente na $i$-ésima câmara.
+
+Isto é, minimiza a soma das diferenças da massa total em cada câmara em relação a média $A$.
+
+
+A estratégia gulosa que resolve esse problema é a seguinte:
+
+1. Se $S<2C$, adicione $2C-S$ espécimes com massa $0$.
+2. Ordene as espécimes pela massa.
+3. Para cada câmara $i$: pareie as espécimes de massa $M_i$ e $M_{2C-i+1}$ na câmara.
+
+
+Uma dica que funciona neste caso, e em muitos outros, é que em alguns casos, ordenar a entrada pode ajudar.
+
+### UVa 10382
+
+Tome agora o problema [UVa 10382](https://uva.onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=1323). Suponha uma faixa retangular de grama com dimensões de comprimento e largura $l\times w$ e uma quantidade de $n$ irrigadores. Cada irrigador possui uma abrangência circular com raio $R$ e está posicionado no centro da faixa de grama e com o centro posicionado a uma distância horizontal do início da faixa, conforme figura abaixo:
+
+![Irrigadores](figures/sprinklers.png)
+
+Como o número de irrigadores é no máximo $10000$, uma solução via busca completa é inviável, levaria $2^{10000}$ possibilidades, uma vez que esse número representa a quantidade de subconjuntos de irrigadores possíveis.
+
+Fazendo uma análise trigonométrica, é possível ver que, cada irrigador cobre no máximo uma distância horizontal $d_x$ do seu centro, conforme figura abaixo:
+
+![Irrigadores](figures/sprinklers2.png)
+
+Como temos um triângulo retângulo, o valor de $d_x = \sqrt{(R^2 - \frac{W}{2}^2 )}$. Logo, cada círculo com centro em $(x,y)$, cobre todo o intervalo da faixa $[x-dx,x+dx]$.
+
+Reduzimos este problema para o problema de interseção de intervalos que possui uma solução gulosa!
+
+1. Ordene todos os círculos de acordo com o término $x+dx$. 
+2. Para cada círculo: 
+   1. Se o diâmetro do círculo  não é suficiente para cubrir verticalmente a faixa de grama, ignore-o.
+   2. Caso contrário, chqeue se o circulo está em conflito (interseção) com último círculo escolhido para compor a solução, se não está: insira o círculo na solução.
+3. Cheque a solução e verifique se ela não tem "buracos". Em caso afirmativo, você conseguiu encontrar a menor quantidade de irrigadores que resolve o problema.
+
+### UVa 11292 
+
+No problema [UVa 11292](https://uva.onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=2267) são dados $n$ cabeças de dragão e $m$ cavaleiros. Cada cabeça de dragão tem um diâmetro $D$ e cada cavaleiro tem uma altura $H$. O cavaleiro pode cortar a cabeça do dragão somente se a sua altura $H\geq D$.
+
+Dado uma lista de diâmetros de cabeça e outra de alturas de cavaleiros, o problema consiste em determinar 
+1. Se é possível cortar todas as cabeças de dragão
+2. Em caso afirmativo, qual o total mínimo da soma das alturas dos cavaleiros que compõem uma solução.
+
+
+Neste problema, mas uma vez ordenar faz sentido. Ordena-se a lista de alturas e diâmetros de cabeça e utiliza-se a seguinte inspeção linear:
+
+
+{% highlight cpp %}
+{% include_relative src/uva11292.cpp %}
+{% endhighlight %}
+
+### Dicas para Algoritmos Gulosos
+
+- Provar a correção da solução gulosa leva tempo.
+- Se o tamanho da entrada for suficientemente pequeno para acomodar uma solução de Programação Dinâmica ou Busca Completa, utilize ela em vez da solução gulosa, uma vez que esta não é certa de funcionar em qualquer problema.
+- Ordenar a entrada pode ajudar a pensar na escolha gulosa.
+- Algoritmos gulosos geralmente são eficientes em contrapartida aos elaborados usando outras abordagens.
 ## Programação Dinâmica
 
 ## Leituras Recomendadas
