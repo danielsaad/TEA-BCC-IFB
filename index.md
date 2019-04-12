@@ -5,6 +5,11 @@ title: Home
 
 # Avisos
 
+## 12/04/2019
+
+Prezados, a avaliação de **Paradigmas - Divisão e Conquista** está disponível neste [link](https://a2oj.com/contest?ID=39405).
+
+Já a avaliação de **Paradigmas - Algoritmos Gulosos** encontra-se [aqui](https://a2oj.com/contest?ID=39406)
 
 ## 29/03/2019
 
