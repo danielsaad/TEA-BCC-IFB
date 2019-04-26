@@ -240,6 +240,124 @@ Neste problema, mas uma vez ordenar faz sentido. Ordena-se a lista de alturas e 
 - Se o tamanho da entrada for suficientemente pequeno para acomodar uma solução de Programação Dinâmica ou Busca Completa, utilize ela em vez da solução gulosa, uma vez que esta não é certa de funcionar em qualquer problema.
 - Ordenar a entrada pode ajudar a pensar na escolha gulosa.
 - Algoritmos gulosos geralmente são eficientes em contrapartida aos elaborados usando outras abordagens.
+
 ## Programação Dinâmica
+
+Para ilustrar o conceito de Programação Dinâmica, utilizaremos um exemplo do problema [UVa 11450](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=2445).
+
+Este problema é sobre compras de paças de vestuário para ir a um casamento. Existe $C$ ($1\leq C \leq 20$) tipos de peças de roupa diferentes e $M$ ($1\leq M \leq 200$) o montante disponível. Para cada um dos $C$ tipos de peça, existe um número $K$ ($1\leq K \leq 20$) de peças daquele tipo, cada um com uma descrição de preço. O objetivo é gastar o máximo possível, comprando exatamente uma peça de cada tipo, sem exceder uma quantia $M$ ($1\leq M \leq 200$)
+
+A solução deverá indicar qual o valor máximo gasto, ou a impossibilidade de gastar um valor menor ou igual a $M$.
+
+
+Para exemplificar o problema, tome o seguinte cenário, o montante disponível é $M=20$, e existem três tipos de peça:
+
+- Três camisas com custos $(6,4,8)$.
+- Duas gravatas com custos $(5,10)$.
+- Três sapatos com custos $(1,5,3,5)$.
+
+Uma solução para este problema é pegar uma camisa de custo $8$, uma gravata e custo $10$ e um sapato de custo $1$, totalizando $19$. Outra solução seria obter uma camisa de custo $6$, uma gravata de custo $10$ e um sapato de custo $3$.  Não existe solução que gaste $20$.
+
+Supondo o mesmo cenário, mas com $M=9$, mesmo se pegássemos os items mais baratos de cada tipo, não conseguiríamos ficar abaixo do montante disponível. Neste caso, o problema não possui uma solução.
+
+**Abordagem 1: Algoritmo Guloso (WA)**
+
+Podemos pensar em um algoritmo guloso que sempre pega o item mais caro de cada tipo que não excede o montante disponível. No entanto, a solução nem sempre é correta.
+
+Tome o exemplo anterior, mas com $M=12$. Com uma abordagem gulosa, inicialmente, pegaríamos uma camisa de custo $8$, reduzindo o montante para $M=4$ e com esta quantia, não conseguimos comprar nenhuma gravata. O algoritmo guloso então reportaria que não existe solução, quanto na verdade, uma solução ótima nesse cenário envolve uma camisa com custo $4$, uma gravata de custo $5$ e um sapato de custo $3$ ($4+5+3 = 12$). 
+
+
+**Abordagem 2: Divisão e Conquista (WA)**
+
+Este problema não pode ser resolvido via o paradigma de divisão e conquista pelo motivo de que os subproblemas não são independentes um do outro.
+
+**Abordagem 3: Busca Completa (TLE)**
+
+A abordagem de busca completa pode resolver esse problema, mas devido ao tamanho da entrada, ela tomará muito tempo.
+A estratégia é, escolha o $i$-ésimo modelo do $j$-ésimo tipo de peça, subtraia o montante atual pelo preço do $i$-ésimo modelo e proceda recursivamente para o $j+1$-ésimo tipo de peça.  De todas as combinações válidas, escolhemos aquela que maximiza a quantia gasta e que não excede o montante inicial.
+
+O código abaixo ilustra um esboço da solução.
+
+
+{% highlight cpp %}
+{% include_relative src/uva11450tle.cpp %}
+{% endhighlight %}
+
+
+Como uma entrada pode ter no máximo $C = 20$ tipos de peça e cada tipo de peça pode possuir $K=20$ modelos, temos que a busca completa leva $20^20$, operações, o que é demais.
+
+**Abordagem 4: Programação Dinâmica Top-Down (AC)**
+
+Podemos perceber que o problema tem duas propriedades interessantes.
+
+1. Subestrutura ótima: a solução para o subproblema é parte da solução do problema maior. Isto é, se o $i$-ésimo elemento do $k$-ésimo tipo  tipo de peça está na solução, a solução do subproblema sem a peça escolhida tem que ser ótima. 
+2. O problema tem sobreposição de subproblemas. O espaço de busca $20^20$ possui muitos subproblemas que se sobrepoem.
+
+O item 2. é chave para as soluções baseadas em DP. Como existe sobreposição de subproblemas, podemos trocar espaço por tempo. Sempre que um subproblema é resolvido, armazenamos a sua solução e, no caso de sua recorrência, o valor já computado é utilizado.
+
+Podemos utilizar a solução baseada em busca completa discutida anteriormente e utilizar uma técnica de *memoization* para guardar as soluções dos subproblemas. Sempre que nos deparamos com subproblemas, primeiramente verificamos se eles já foram resolvidos: em caso afirmativo, utilizamos a solução já computada, em caso negativo, computamos a solução e armazenamos a resposta em uma ED. 
+
+Isso dá origem ao seguinte algoritmo:
+
+{% highlight cpp %}
+{% include_relative src/11450td.cpp %}
+{% endhighlight %}
+
+Como estamos referenciado uma única célula, podemos deixar o código mais enxuto ao utilizar uma referência para a célula.
+
+{% highlight cpp %}
+{% include_relative src/11450td2.cpp %}
+{% endhighlight %}
+
+**Abordagem 5: Programação Dinâmica Bottom-up (AC)**
+
+É possível implementar uma solução de Programação Dinâmica interativa, sem o uso de recursão. Chamamos essa abordagem de *bottom-up*. A estratégia dela é construir a solução de problemas do menor para o maior tamanho.
+
+Vamos modelar o problema da seguinte forma: a solução de $S(i,m)$ nos diz se é possível ter o montante $m$ restante após comprar uma peça de cada um dos $i+1$ primeiros tipos. Claramente, $S(0,m)$ é verdadeiro sempre que $M-x\geq 0$, em que $x$ é o preço dos items de tipo $0$.
+
+Suponha agora que tenhamos $S(i,m)$ computado para todo $0\leq i < C$ e $0\leq m \leq M$.
+Caso seja possível chegar no montante final $m$ após utilizar os $i$ primeiros tipos, tentamos incluir as peças do $i+1$ primeiro tipo na solução. Para cada valor das peças  tipo $i+1$, verificamos se o montante $m$ de $S(i,m)$ que sobrou é suficiente para incluir a peça, se for possível, então $S(i+1,m-x)$ tem que ser verdadeiro, em que $x$ é o valor da peça.
+
+Resumindo o discutido em uma única relação de recorrência, temos:
+
+
+Isso gera a seguinte solução.
+
+
+
+{% highlight cpp %}
+{% include_relative src/11450bu.cpp %}
+{% endhighlight %}
+
+
+É fácil ver que, para a computação da $i$-ésima linha desta tabela, só precisamos olhar para a linha anterior. Então poderíamos economizar espaço e utilizar uma tabela com duas linhas, uma para a solução $i-1$-ésimo item e uma para a solução considerando o $i$-ésimo item.
+
+
+
+**Comparação entre as abordagens Top-Down e Bottom-Up**
+
+Ambas as abordagens são interessantes para resolução de problemas envolvendo programação dinâmica, cada uma com suas vantagens e desvantagents.
+
+Top-Down:
+- Vantagens
+  - Pode ser derivada de uma solução baseada em busca completa.
+  - Computa os subproblemas apenas quando necessário.
+- Desvantagens
+  - Mais lenta se subproblemas são revisitados frequentemente, por conta da chamada recursiva.
+  - Se existem $M$ possíveis estados, é necessário de uma tabela com dimensão $O(M)$. 
+
+Bottom-up:
+- Vantagens
+  - Mais rápida se subproblemas são revisitados frequentemente.
+  - Mais econômica em espaço se utilizar o truque de excluir uma dimensão.
+- Desvantagens
+  - Mais difícil para programadores que possuem mais afinidade com recursão.
+  - Todos os subproblemas devem ser resolvidos para construir a solução de problemas maiores.
+
+## Problemas Clássicos
+### 2d Range Sum
+### Longest Increasing Sequence
+### Boolean Knapsack (Mochila Booleana)
+### Coin Change (Troco) 
 
 ## Leituras Recomendadas
