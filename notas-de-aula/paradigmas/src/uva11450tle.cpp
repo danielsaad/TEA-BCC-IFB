@@ -34,7 +34,7 @@ int backtracking(int current_m,int idx){
          * escolhida, subtraindo sempre o preço da peça do tipo idx do montante
          * atual
          ***/
-        ans = max(ans,backtracking(current_m-preco[idx][i]));
+        ans = max(ans,backtracking(current_m-preco[idx][i],idx+1));
     }
     return ans;
 }
