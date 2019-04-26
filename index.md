@@ -5,6 +5,12 @@ title: Home
 
 # Avisos
 
+## 26/04/2019
+
+A pedidos, eu adiei as avaliações de Algoritmos Gulosos e Divisão e Conquista em mais uma semana.
+
+A avaliação de Programação Dinâmica está disponível [aqui](https://a2oj.com/contest?ID=39529).
+
 ## 12/04/2019
 
 Prezados, a avaliação de **Paradigmas - Divisão e Conquista** está disponível neste [link](https://a2oj.com/contest?ID=39405).
