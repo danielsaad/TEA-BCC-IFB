@@ -284,7 +284,7 @@ O código abaixo ilustra um esboço da solução.
 {% endhighlight %}
 
 
-Como uma entrada pode ter no máximo $C = 20$ tipos de peça e cada tipo de peça pode possuir $K=20$ modelos, temos que a busca completa leva $20^20$, operações, o que é demais.
+Como uma entrada pode ter no máximo $C = 20$ tipos de peça e cada tipo de peça pode possuir $K=20$ modelos, temos que a busca completa leva $20^{20}$, operações, o que é demais.
 
 **Abordagem 4: Programação Dinâmica Top-Down (AC)**
 
@@ -355,9 +355,184 @@ Bottom-up:
   - Todos os subproblemas devem ser resolvidos para construir a solução de problemas maiores.
 
 ## Problemas Clássicos
-### 2d Range Sum
-### Longest Increasing Sequence
+
+A seguir serão ilustrados vários problemas clássicos da Computação que envolvem soluções baseadas em _Programação Dinâmica_.
+
+### 2D Range Sum
+
+Dada uma matriz $M_{n\times m}$ contendo números inteiros (positivos e negativos), o objetivo é achar o retângulo que maximize a soma dos inteiros contidos nele e dizer qual a soma.
+
+**Solução força-bruta**
+
+A solução força-bruta simplesmente computa, de maneira ingênua, a soma de todos os possíveis retângulos. Um retângulo é definido por um par de coordenadas $(x_1,y_1)$ e $(x_2,y_2)$, em que o primeiro representa o canto superior esquerdo e o último o canto inferior direito, conforme figura abaixo.
+
+![Definição de retângulo](./figures/retangle.png)
+
+Essa solução força-bruta pode ser representada de acordo com o seguinte esboço.
+
+{% highlight cpp %}
+{% include_relative src/retangle-sum-naive.cpp %}
+{% endhighlight %}
+
+O algoritmo apresentado é ineficiente, uma vez que existem $\Theta(n^2m^2)$ possíveis retângulos, o que nos levaria a um algoritmo com complexidade total de $\Theta(n^3m^3)$.
+
+**Solução Programação Dinâmica**
+
+Podemos resolver esse problema em tempo $\Theta(n^2m^2)$ desde que seja possível realizar a soma de um retângulo $(x_1,y_1)$ $(x_2,y_2)$ em tempo constante. Para isso utilizaremos uma técnicas de programação dinâmica.
+
+Suponha que uma matriz $S_{n\times m}$ foi computada e que $S[i,j]$ contém a soma do retângulo $(0,0)$ $(i,j)$. Como computar a soma do retângulo $(x_1,y_1)$ $(x_2,y_2)$ a partir disso?
+
+Observando a figura abaixo, temos que a soma contida no retângulo $(x_1,y_1)(x_2,y_2)$ é simplesmente a soma do retângulo $(0,0)(x_2,y_2)$ (cores rosa, roxo, dourado e marrom) menos a soma do retângulo $(0,0)(x_2,y_1-1)$ (cores marrom e dourado), menos a soma do retângulo $(0,0)(x_1-1,y_2)$ (cores marrom e roxo), mais a soma do retângulo $(0,0)(x_1-1,y_1-1)$ (cor marrom). Temos que adicionar a soma do retângulo marrom, pois ele foi contabilizado duas vezes nos retângulos marrom/dourado e marrom/roxo.
+
+![Definição de retângulo](./figures/retangle2.png)
+
+
+Traduzindo isso para termos de $S$, temos que a soma do retângulo $(x_1,y_1)(x_2,y_2)$ é simplesmente $S[y_2][x_2] -S[y_1-1][x_2] - S[y2][x_1-1] +  S[y_1-1][x_1-1]$. Em código isso é ilustrado abaixo.
+
+{% highlight cpp %}
+{% include_relative src/retangle-sum-dp.cpp %}
+{% endhighlight %}
+
+Dado que $S$ está computado, a soma de qualquer retângulo pode ser obtida com $3$ operações aritméticas, portanto leva tempo $\Theta(1)$.
+
+A pergunta que fica é: como computar $S$ em tempo eficiente?
+Utilizamos uma técnica similar. O retângulo $(0,0)(i,j)$ é simplesmente a soma do retângulo $(0,0)(i-1,j)$ mais a soma do retângulo $(0,0)(i,j-1)$ menos a soma do retângulo (0,0)(i-1,j-1) mais o valor contido na célula $M[i][j]$. Isto é exemplificado pela figura abaixo, o que fazemos é somar o retângulos vermelho e dourado, o retângulos dourado e amarelo, o retângulo verde e retiramos o retângulo dourado, pois foi contabilizado duas vezes.
+
+![Definição de retângulo](./figures/retangle3.png)
+
+
+Essa discussão é traduzida na seguinte relação de recorrência:
+
+$$
+
+S(i,j) = \left\{
+  \begin{array}{l}
+    M[0][0],\quad i=0 \land j=0\\
+    S(i-1,0) + M[i][0], \quad i>0 \land j = 0\\
+    S(0,j-1) + M[0][j],\quad i=0 \land j>0\\
+    S(i-1,j) + S(i,j-1) - S(i-1,j-1) + M[i][j],\quad i>0 \land j>0\\
+  \end{array}
+\right.
+
+$$
+
+
+
+O que gera o código abaixo.
+
+{% highlight cpp %}
+{% include_relative src/compute-s.cpp %}
+{% endhighlight %}
+
+A partir do pré-processamento de $S$, que leva tempo $\Theta(nm)$ é possível calcular a soma de qualquer retângulo em tempo constante. Isso possibilitar a maior soma dentre todos os retângulos em tempo $\Theta(n^2m^2)$.
+
+### Longest Increasing Sequence (LIS)
+
+Seja $V = (v_0,v_1,v_2,\ldots,v_{n-1})$ uma sequência de $n$ valores.
+Uma sequência $S$ é uma subsequência de $V$ se $S = (v_{i_0},v_{i_1},\ldots,v_{i_{k-1}})$ com $0\leq i_{0} < i_{1} < \ldots < i_{k-1} < n$. Em outras palavras, $S$ é uma subsequência de $V$ se pode ser formada por elementos de $V$, desde que lidos da esquerda para direita, e não necessariamente consecutivos.  Por exemplo, se $V=(-7,10,9,2,3,8,8,1)$, uma subsequência de $V$ pode ser $S=(-7,9,2,3,1)$.
+
+No problema da maior subsequência crescente (Longest Increasing Sequence ou LIS), o interesse é obter uma subsequência de $V$ que seja:
+  
+1. Maior possível;
+2. Seus elementos sejam crescentes.
+
+No caso do exemplo anterior, a maior subsequência crescente de $V=(-7,10,9,2,3,8,8,1)$ é $S=(-7,2,3,8)$, que possui comprimento $4$.
+
+Obviamente a abordagem gulosa, de pegar o próximo elemento que é maior que o último escolhido não vai funcionar neste caso, pois se inserimos o $-7$ na solução, a abordagem gulosa incluiria o $10$ como próximo elemento, o que impossibilitaria a inserção de qualquer outro número.
+
+Suponha que tenhamos calculado em $L(k)$ $(0\leq k < i)$ o tamanho da maior subsequência crescente de $V = (v_0,\ldots,v_k)$ e que termina obrigatoriamente com o item $v_k$, como computar $L(i)$?
+
+Se $L(i)$ tem que terminar obrigatoriamente com $v_i$ temos que chegar quais das subsequências anteriores possibilitam a inserção de $v_i$ como último elemento (a subsequência deve ser crescente) e maximizam o tamanho.
+
+Desta forma, podemos definir $L(i)$ como:
+
+$$
+L(i) = \left\{
+  \begin{array}{l}
+  1,\quad i = 0\\
+  x+1,\quad \text{ em que } x = \max_{0\leq k <i}\{|L(k)|\;|\; v_k < v_i\},\quad i>0
+  \end{array}
+\right.
+$$
+
+Esta relação de recorrência pode ser traduzida no seguinte código.
+
+{% highlight cpp %}
+{% include_relative src/lis.cpp %}
+{% endhighlight %}
+
+
 ### Boolean Knapsack (Mochila Booleana)
+
+Outro problema clássico é o _Problema da Mochila 0-1_. Neste problema, existe uma coleção de $n$ itens, cada um contendo um peso $w[i]$ e um valor $v[i]$. O objetivo é escolher itens de modo a maximizar o valor sem exceder uma capacidade de peso $W$. No caso deste problema, existe uma única instância de cada item.
+
+Por exemplo se $v=(100,70,50,10)$, $w = (10,4,6,12)$ e $W = 12$, uma solução que maximiza o valor dos itens, sem exceder a capacidade $W$, é pegar os itens de peso $4$ e $6$ obtendo o valor $120$.
+
+
+A solução de programação dinâmica consiste em computar a seguinte relação de recorrência:
+
+$$
+T(i,j) = \left\{
+  \begin{array}{l}
+    0,\quad  j<w[0]\\
+    v[0],\quad i=0\land j\geq w[0]\\
+    \max(a,b),\quad i>0 \quad \text{ em que} \\
+    \qquad a = T(i-1,j)\\
+    \qquad b = T(i-1,j-w[i]) + v[i],\quad \text{ se $j\geq w[i]$}, \text{ ou $b=0$, caso contrário}.\\
+  \end{array}
+\right.
+$$
+
+Esta equação nos diz qual o maior valor que é possível obter considerando apenas os itens de valor $v_0,\ldots,v_i$ com pesos $w_{0},\ldots,w_{i}$ e que não excedam a capacidade $j$. Podemos ver que o caso base desta equação de recorrência é $0$, quando $i=0\lor j<w[0]$, e $v[0]$ quando $j\geq w[0]$, isto é, considerando apenas o primeiro item, conseguimos obter o valor do primeiro item apenas quando a capacidade é maior ou igual ao peso dele. O caso geral nos diz que a solução de $T(i,j)$ é obtida da solução sem o $i$-ésimo item, $T(i-1,j)$,  ou considerando o $i$-ésimo item. Se o $i$-ésimo item deve ser considerado, a solução ótima tem que partir de $T(i-1,j-w[i])$, a solução considerando os $i-1$ primeiros itens com capacidade máxima de $j-w[i]$, visto que queremos incluir um item de peso $w[i]$.  Note que no segundo caso,  $j$ deve ser maior ou igual ao peso do $i$-ésimo item, senão $T(i,j)$ deve considerar apenas $T(i-1,j)$.
+
+Esta discussão nos leva para o seguinte código.
+
+
+{% highlight cpp %}
+{% include_relative src/boolean-knapsack.cpp %}
+{% endhighlight %}
+
+
+Como cada linha da matriz de programação dinâmica só depende da anterior, podemos realizar a computação utilizando apenas duas linhas, conforme código abaixo,
+
+{% highlight cpp %}
+{% include_relative src/boolean-knapsack-memory.cpp %}
+{% endhighlight %}
+
 ### Coin Change (Troco) 
 
+O problema do troco se resume a, dado um conjunto de valores de  moeda  $v= \{ v_0,v_1,\ldots,v_{n-1}\} $,  e uma quantia $W$, determinar o número mínimo de moedas que pague $W$. Neste problema, assume-se que existe uma quantidade infinita de moedas de cada valor.
+
+
+A solução de programação dinâmica consiste em computar a seguinte relação de recorrência:
+
+$$
+T(i,j) = \left\{
+  \begin{array}{l}
+    0,\quad  j=0\\
+    j/v[0],\quad i=0\land j>0 \land j \mod v[0] = 0\\
+    \infty,\quad i=0 \land j>0 \land j \mod v[0] \neq 0\\
+    \min(a,b),\quad i>0 \quad \text{ em que} \\
+    \qquad a = T(i-1,j)\\
+    \qquad b = T(i,j-w[i]) + 1,\quad \text{ se $j\geq v[i]$}, \text{ ou $b=\infty$, caso contrário}.\\
+  \end{array}
+\right.
+$$
+
+
+A interpretação desta equação é $T(i,j)$ é o número mínimo de moedas para pagar o valor $j$ considerando apenas as moedas $v_0,\ldots,v_i$. O caso base, $j=0$ requer $0$ moedas, uma vez que o valor a ser pago é nulo.  Considerando apenas a primeira moeda, quando $i=0$, só conseguimos pagar quando o valor $j$ é divisível por $v_0$;  neste caso, utiliza-se $\frac{j}{v_0}$ moedas;   caso contrário não há solução, simbolizado com o valor $\infty$. Para o caso geral, a solução pode: não utilizar a moeda $v_i$, neste caso a solução encontra-se em $T(i-1,j)$; utilizar a moeda $v_i$, neste caso a solução encontra-se em $T(i,j-v[i])$ e devemos adicionar mais uma moeda a solução, desde que $j\geq v[i]$. O segundo caso, diferentemente do Problema da Mochila Booleana, recupera a solução de  $T(i,j-v[i])$ e não de $T(i-1,j-v[i])$, uma vez que adimitimos repetição da $i$-ésima moeda.
+
+Isto leva ao seguinte código.
+
+{% highlight cpp %}
+{% include_relative src/coin-change.cpp %}
+{% endhighlight %}
+
+O mesmo truque de economia de memória do problema da mochila 0-1 pode ser utilizada neste caso, uma vez que cada linha da matriz só depende da linha imediatamente anterior.
+
+
 ## Leituras Recomendadas
+
+- [Top 50 Dynamic Programming Practice Problems](https://blog.usejournal.com/top-50-dynamic-programming-practice-problems-4208fed71aa3)
+- [Dynamic Programming: Geeks for Geeks](https://www.geeksforgeeks.org/dynamic-programming/)
+- [7 Steps to solve a Dynamic Programming problem](https://medium.freecodecamp.org/follow-these-steps-to-solve-any-dynamic-programming-interview-problem-cc98e508cd0e)
