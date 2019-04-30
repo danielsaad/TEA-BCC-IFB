@@ -7,10 +7,10 @@
  * subsequência crescente de v
  */
 int lis(vector<int>& v){
-    // Tamanho da maior subsequência crescente
-    int max_l = 0;
     // Inicializamos uma tabela com 1s
     vector<int> dp(v.size(),1);
+    // Tamanho da maior subsequência crescente
+    int max_l = dp[0]; // caso base, dp[0] = 1
     for(size_t i =1;i<v.size();i++){
         for(size_t j=0;j<i;j++){
             /***
