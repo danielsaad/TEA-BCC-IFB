@@ -212,11 +212,11 @@ Como temos um triângulo retângulo, o valor de $d_x = \sqrt{(R^2 - \frac{W}{2}^
 
 Reduzimos este problema para o problema de interseção de intervalos que possui uma solução gulosa!
 
-1. Ordene todos os círculos de acordo com o término $x+dx$. 
-2. Para cada círculo: 
-   1. Se o diâmetro do círculo  não é suficiente para cubrir verticalmente a faixa de grama, ignore-o.
-   2. Caso contrário, chqeue se o circulo está em conflito (interseção) com último círculo escolhido para compor a solução, se não está: insira o círculo na solução.
-3. Cheque a solução e verifique se ela não tem "buracos". Em caso afirmativo, você conseguiu encontrar a menor quantidade de irrigadores que resolve o problema.
+1. Ordene todos os círculos em ordem crescente pela extremidade da esquerda $x-dx$. Em caso de empate, dê preferência para o maior valor de $x+dx$ (extremidade da direita). 
+2. Insira o primeiro círculo na solução. Caso ainda exista uma porção não coberta à esquerda do primeiro círculo, a resposta já é não.
+3. Enquanto houver círculos a serem analisados ou enquanto a faixa não tiver sido coberta.
+   1. Escolha o círculo com maior $x+dx$ e que tenha interseção com o último cículo inserido na solução e coloque o círculo escolhido na solução.. 
+4. Cheque a solução e verifique se ela tem "buracos". Em caso negativo, você conseguiu encontrar a menor quantidade de irrigadores que resolve o problema, que corresponde ao número de círculos na solução.
 
 ### UVa 11292 
 

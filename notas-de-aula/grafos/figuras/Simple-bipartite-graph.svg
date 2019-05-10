@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:ns0="http://www.iki.fi/pav/software/textext/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="600"
+   height="600"
+   version="1.0"
+   id="svg2"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Simple-bipartite-graph.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1600"
+     inkscape:window-height="876"
+     id="namedview48"
+     showgrid="false"
+     inkscape:zoom="2.2250293"
+     inkscape:cx="268.60738"
+     inkscape:cy="599.33882"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <metadata
+     id="metadata50">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <!-- Simple bipartite graph example, this work is released by it's author in the Public Domain. -->
+  <defs
+     id="shapes_and_styles">
+    <style
+       type="text/css"
+       id="style5">
+      .styleLink { stroke:#000000; stroke-width:5; }
+      .styleU { fill:#5050A0; stroke:#000000; stroke-width:1.5; }
+      .styleV { fill:#50A050; stroke:#000000; stroke-width:1.5; }
+      .style_ensU { fill:none; stroke:#5050A0; stroke-width:2; }
+      .style_ensV { fill:none; stroke:#50A050; stroke-width:2; }
+      .labels {font-size:32px; font-style:normal; font-family:Bitstream Vera Sans}
+    </style>
+  </defs>
+  <path
+     class="style_ensU"
+     d="M 100,50 C 200,50 200,550 100,550 C 000,550 000,50 100,50 "
+     id="path7" />
+  <path
+     class="style_ensV"
+     d="M 500,50 C 600,50 600,550 500,550 C 400,550 400,50 500,50 "
+     id="path9" />
+  <text
+     class="labels"
+     x="90"
+     y="45"
+     id="LabelU"
+     style="font-style:normal;font-size:32px;font-family:'Bitstream Vera Sans'" />
+  <text
+     class="labels"
+     x="490"
+     y="45"
+     id="text12"
+     style="font-style:normal;font-size:32px;font-family:'Bitstream Vera Sans'" />
+  <path
+     class="styleLink"
+     d="M 100,100 L 500,200"
+     id="path14" />
+  <path
+     class="styleLink"
+     d="M 100,200 L 500,300"
+     id="path16" />
+  <path
+     class="styleLink"
+     d="M 100,500 L 500,200"
+     id="path18" />
+  <path
+     class="styleLink"
+     d="M 100,300 L 500,500"
+     id="path20" />
+  <path
+     class="styleLink"
+     d="M 100,500 L 500,500"
+     id="path22" />
+  <path
+     class="styleLink"
+     d="M 100,200 L 500,200"
+     id="path24" />
+  <path
+     class="styleLink"
+     d="M 100,400 L 500,300"
+     id="path26" />
+  <path
+     class="styleLink"
+     d="M 100,300 L 500,400"
+     id="path28" />
+  <circle
+     class="styleU"
+     cx="100"
+     cy="100"
+     r="10"
+     id="circle30" />
+  <circle
+     class="styleU"
+     cx="100"
+     cy="200"
+     r="10"
+     id="circle32" />
+  <circle
+     class="styleU"
+     cx="100"
+     cy="300"
+     r="10"
+     id="circle34" />
+  <circle
+     class="styleU"
+     cx="100"
+     cy="400"
+     r="10"
+     id="circle36" />
+  <circle
+     class="styleU"
+     cx="100"
+     cy="500"
+     r="10"
+     id="circle38" />
+  <circle
+     class="styleV"
+     cx="500"
+     cy="200"
+     r="10"
+     id="circle40" />
+  <circle
+     class="styleV"
+     cx="500"
+     cy="300"
+     r="10"
+     id="circle42" />
+  <circle
+     class="styleV"
+     cx="500"
+     cy="400"
+     r="10"
+     id="circle44" />
+  <circle
+     class="styleV"
+     cx="500"
+     cy="500"
+     r="10"
+     id="circle46" />
+  <g
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="content"
+     transform="matrix(2.7912133,0,0,-2.7912133,-538.29335,2015.2821)"
+     xml:space="preserve"
+     stroke-miterlimit="10.433"
+     font-style="normal"
+     font-variant="normal"
+     font-weight="normal"
+     font-stretch="normal"
+     font-size-adjust="none"
+     letter-spacing="normal"
+     word-spacing="normal"
+     ns0:text="$V_1$"
+     ns0:preamble=""><path
+       style="fill:#000000;stroke-width:0"
+       inkscape:connector-curvature="0"
+       d="m 229.68,712.78 0.05,0.07 0.04,0.06 0.05,0.07 0.04,0.05 0.04,0.06 0.05,0.05 0.04,0.05 0.04,0.04 0.05,0.04 0.04,0.04 0.04,0.03 0.04,0.03 0.04,0.03 0.04,0.03 0.04,0.02 0.04,0.02 0.04,0.02 0.04,0.02 0.04,0.01 0.04,0.02 0.04,0.01 0.03,0.01 0.04,0.01 0.04,0 0.03,0.01 0.04,0 0.07,0.01 0.07,0.01 0.07,0 c 0.12,0.01 0.13,0.18 0.13,0.19 0,0.08 -0.05,0.12 -0.13,0.12 -0.25,0 -0.54,-0.03 -0.81,-0.03 -0.33,0 -0.67,0.03 -0.99,0.03 -0.06,0 -0.19,0 -0.19,-0.19 0,-0.11 0.09,-0.12 0.16,-0.12 0.27,-0.02 0.46,-0.12 0.46,-0.33 0,-0.15 -0.15,-0.36 -0.15,-0.37 l -3.05,-4.85 -0.68,5.25 c 0,0.17 0.23,0.3 0.69,0.3 0.14,0 0.25,0 0.25,0.2 0,0.09 -0.08,0.11 -0.14,0.11 -0.4,0 -0.83,-0.03 -1.24,-0.03 -0.18,0 -0.36,0.01 -0.55,0.01 -0.17,0 -0.36,0.02 -0.53,0.02 -0.07,0 -0.19,0 -0.19,-0.19 0,-0.12 0.09,-0.12 0.25,-0.12 0.55,0 0.56,-0.09 0.6,-0.34 l 0.78,-6.12 c 0.03,-0.2 0.07,-0.23 0.2,-0.23 0.16,0 0.2,0.05 0.28,0.18 z"
+       id="path3405" /><path
+       style="fill:#000000;stroke-width:0"
+       inkscape:connector-curvature="0"
+       d="m 231.58,710.05 0,0.01 0,0.01 0,0.01 0,0.01 0,0 0,0.01 0,0.01 0,0.01 0,0 0,0.01 -0.01,0.01 0,0 0,0.01 0,0 0,0.01 0,0 0,0.01 0,0 0,0.01 0,0.01 -0.01,0.01 0,0 -0.01,0.01 0,0.01 0,0 -0.01,0.01 -0.01,0 0,0 -0.01,0.01 -0.01,0 -0.01,0 -0.01,0 0,0 -0.01,0 0,0 -0.01,0.01 0,0 -0.01,0 -0.01,0 0,0 -0.01,0 -0.01,0 0,0 -0.01,0 -0.01,0 -0.01,0 -0.01,0 0,0 -0.01,0 -0.01,0 c -0.45,-0.44 -1.08,-0.45 -1.37,-0.45 l 0,-0.25 c 0.17,0 0.63,0 1.01,0.2 l 0,-3.55 c 0,-0.23 0,-0.32 -0.69,-0.32 l -0.27,0 0,-0.25 c 0.13,0.01 0.98,0.03 1.24,0.03 0.22,0 1.09,-0.02 1.25,-0.03 l 0,0.25 -0.27,0 c -0.69,0 -0.69,0.09 -0.69,0.32 z"
+       id="path3407" /></g>  <g
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     ns0:preamble=""
+     ns0:text="$V_2$"
+     text-anchor="start"
+     word-spacing="normal"
+     letter-spacing="normal"
+     font-size-adjust="none"
+     font-stretch="normal"
+     font-weight="normal"
+     font-variant="normal"
+     font-style="normal"
+     fill-opacity="1"
+     fill-rule="evenodd"
+     fill="none"
+     stroke-opacity="1"
+     stroke-dashoffset="0"
+     stroke-dasharray="none"
+     stroke-miterlimit="10.433"
+     stroke-linejoin="miter"
+     stroke-linecap="butt"
+     stroke="black"
+     xml:space="preserve"
+     transform="matrix(2.7912133,0,0,-2.7912133,-135.56989,2016.6326)"
+     id="g3486"><path
+       id="path3488"
+       fill="black"
+       stroke-width="0"
+       d="M229.68,712.78 L229.73,712.85 L229.77,712.91 L229.82,712.98 L229.86,713.03 L229.9,713.09 L229.95,713.14 L229.99,713.19 L230.03,713.23 L230.08,713.27 L230.12,713.31 L230.16,713.34 L230.2,713.37 L230.24,713.4 L230.28,713.43 L230.32,713.45 L230.36,713.47 L230.4,713.49 L230.44,713.51 L230.48,713.52 L230.52,713.54 L230.56,713.55 L230.59,713.56 L230.63,713.57 L230.67,713.57 L230.7,713.58 L230.74,713.58 L230.81,713.59 L230.88,713.6 L230.95,713.6 C231.07,713.61,231.08,713.78,231.08,713.79 C231.08,713.87,231.03,713.91,230.95,713.91 C230.7,713.91,230.41,713.88,230.14,713.88 C229.81,713.88,229.47,713.91,229.15,713.91 C229.09,713.91,228.96,713.91,228.96,713.72 C228.96,713.61,229.05,713.6,229.12,713.6 C229.39,713.58,229.58,713.48,229.58,713.27 C229.58,713.12,229.43,712.91,229.43,712.9 L226.38,708.05 L225.7,713.3 C225.7,713.47,225.93,713.6,226.39,713.6 C226.53,713.6,226.64,713.6,226.64,713.8 C226.64,713.89,226.56,713.91,226.5,713.91 C226.1,713.91,225.67,713.88,225.26,713.88 C225.08,713.88,224.9,713.89,224.71,713.89 C224.54,713.89,224.35,713.91,224.18,713.91 C224.11,713.91,223.99,713.91,223.99,713.72 C223.99,713.6,224.08,713.6,224.24,713.6 C224.79,713.6,224.8,713.51,224.84,713.26 L225.62,707.14 C225.65,706.94,225.69,706.91,225.82,706.91 C225.98,706.91,226.02,706.96,226.1,707.09 Z " /><path
+       id="path3490"
+       fill="black"
+       stroke-width="0"
+       d="M232.76,706.9 H232.52 C232.5,706.74,232.43,706.33,232.34,706.26 C232.29,706.22,231.75,706.22,231.65,706.22 H230.37 C231.1,706.87,231.35,707.06,231.76,707.39 C232.28,707.8,232.76,708.23,232.76,708.89 C232.76,709.73,232.02,710.25,231.13,710.25 C230.27,710.25,229.68,709.64,229.68,709 C229.68,708.65,229.98,708.61,230.05,708.61 C230.22,708.61,230.42,708.73,230.42,708.98 C230.42,709.11,230.37,709.35,230.01,709.35 C230.23,709.84,230.7,710,231.03,710 C231.72,710,232.09,709.46,232.09,708.89 C232.09,708.29,231.65,707.81,231.43,707.56 L229.75,705.9 C229.68,705.84,229.68,705.83,229.68,705.63 H232.55 Z " /></g></svg>
