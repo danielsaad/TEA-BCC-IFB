@@ -9,16 +9,16 @@ permalink:           pretty
 title:               Tópicos Especiais em Algoritmos
 tagline:             'Ciência da Computação'
 description:         'Material auxiliar da disciplina Tópicos Especiais em Algoritmos do curso superior de Ciência da Computação do IFB-Taguatinga.'
-url:                 https://danielsaad.com/TEA-BCC-IFB
-# url: http://localhost
+# url:                 https://danielsaad.com/TEA-BCC-IFB
+url: http://localhost
 paginate:            5
 mathjax: true
 syntax_highlighter: pygments
 # About/contact
 author:
-  name:              Mark Otto
-  url:               https://twitter.com/mdo
-  email:             markdotto@gmail.com
+  name:              Daniel Saad Nogueira Nunes
+  url:               https://danielsaad.com
+  email:             daniel.nunes@ifb.ebu.br
 
 # Custom vars
 version:             1.0.0
