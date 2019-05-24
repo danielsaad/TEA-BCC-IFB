@@ -54,14 +54,14 @@ Na figura abaixo, temos que o nó $3$ domina o nó $4$, mas que o nó $1$ não d
 ![Relação de dominância entre vértices](figuras/dominator.png)
 
 
-Como neste problema $\lvert V\lvert \leq 100$, um algoritmo cúbico é o suficiente para construção de uma solução. A ideia é, partir da origem, marque, através de uma DFS, todos os nós alcançáveis da origem como visitados. Para cada nó $x$, nós excluimos todos os vizinhos diretos de $x$ do grafo e repetimos a consulta a partir da origem. Um vérticed $y$ não é dominado por um vértice $x$ se:
+Como neste problema $\lvert V\lvert \leq 100$, um algoritmo cúbico é o suficiente para construção de uma solução. A ideia é, partir da origem, marque, através de uma DFS, todos os nós alcançáveis da origem como visitados. Para cada nó $x$ visitado a partir da origem, excluímos $x$ do grafo e repetimos a consulta a partir da origem. Um vérticed $y$ não é dominado por um vértice $x$ se:
 
 1. Não é alcançável a partir da origem, ou
-2. Após a exclusão dos vizinhos de $x$, $y$ é alcançável a partir da origem.
+2. Após a exclusão de $x$, $y$ é alcançável a partir da origem.
 
 Se nenhuma das condições acima se aplica, $y$ é dominado por $x$. Para resolver o problema, basta aplicar este procedimento para cada nó $x$ do grafo. Ao todo, tem-se tempo $\Theta(\lvert V \lvert \cdot \lvert V \lvert^2) = \Theta(\lvert V \lvert ^ 3)$. 
 
-**Observação**: não é necessário efetivamente modificar a estrutura do grafo e deletar arestas. Basta marcar os vizinhos de $x$ como impossíveis de serem visitados através da estrutura `dfs_num` vista anteriormente.
+**Observação**: não é necessário efetivamente modificar a estrutura do grafo e deletar vértices. Basta marcar $x$ como já visitado antes de aplicar a DFS.
 
 ### Busca em Largura
 
@@ -179,9 +179,55 @@ Adaptando o código anterior da busca em profundidade, temos o código abaixo.
 {% include_relative src/bipartite.cpp %}
 {% endhighlight %}
 
-### Busca de Pontos de Articulação e Pontes
-
 ### Componentes Fortemente Conexas
+
+Dado um grafo direcionado, dizemos que dois vértices $u$ e $v$ estão na mesma componente fortemente conexa se existe um caminho de $u$ para $v$ e existe um caminho de $v$ para $u$.
+
+Para realizar a detecção de componentes fortemente conexas, é possível utilizar o algoritmo proposto por Tarjan em 1972. Ele consiste em utilizar uma única DFS para armazenar todas as componentes fortemente conexas. Nesta DFS, o algoritmo se preocupa em preencher, para cada nó $u$, duas estruturas de dados:
+
+- $\mathtt{dfs\\_num[u]}$: o número de visitação do nó em uma DFS.
+- $\mathtt{dfs\\_low[u]}$: o nó com $\mathtt{dfs\\_num[u]}$ mais baixo que $u$ consegue alcançar.
+
+Tome um nó $v$ qualquer, tal que $\mathtt{dfs\\_num[u]} = \mathtt{dfs\\_low[u]}$, através deste algoritmo é possível concluir que, todos os outros nós $w$ que possuem $\mathtt{dfs\\_low[w]} = v$, estão na mesma componente fortemente conexa de $v$. Isto é verdade pois, se um nó $w$ está na mesma componente fortemente conexa de $v$, o nó com menor $\mathtt{dfs\\_num[v]}$, $\mathtt{dfs\\_low[w]} = v$ por definição de componente fortemente conexa, uma vez que deve existir um caminho de $w$ para $v$ também!
+
+Para preencher a estrutura de dados $\mathtt{dfs\\_low[u]}$ para cada nó $u$ devemos utilizar o conceito de **back-edge**. Se durante uma DFS, existe uma aresta $(u,v)$ e $v$ ainda não foi visitado, então o menor nó alcançável por $u$ é o mínimo entre o menor nó alcançável por $u$ e o menor nó alcançável por $v$. Caso $v$ tenha sido visitado, porém não finalizado, isto é, nem todos os vizinhos de $v$ foram processados pela DFS, significa que a aresta $(u,v)$ é uma back-edge, e portanto, existe um ciclo! Neste segundo caso, o menor nó alcançável por $u$ é o mínimo entre $\mathtt{dfs\\_low[u]}$ e $\mathtt{dfs\\_num[v]}$, o número de DFS de $v$
+
+Isso é ilustrado pelo seguinte algoritmo.
+
+{% highlight cpp %}
+{% include_relative src/strongly-connected-components.cpp %}
+{% endhighlight %}
+
+
+### Busca de Pontos de Articulação
+
+No conexto de grafos não-direcionados, um ponto de articulação é um vértice $u$ cuja sua remoção ocasiona um aumento no número de componentes conexas do grafo. Por remoção de um vértice, entende-se que tanto o vértice quanto as arestas incidentes nele são removidas.
+
+É possível utilizar um algoritmo similar ao algoritmo de detecção de componentes fortementes conexas de Tarjan para detectar pontos de articulação em um grafo. As mesmas estruturas $\mathtt{dfs\\_low}$ e $\mathtt{dfs\\_num}$ são utilizadas. Suponha um nó $u$ e suponha $v$ um vizinho de $u$. Se $\mathtt{dfs\\_low[v]} \leq \mathtt{dfs\\_num[u]}$, quer dizer que $u$ é um ponto de articulação, pois como $v$ não consegue alcançar nem um nó anterior a $u$ na árvore de DFS, ao retirar $u$, é impossível chegar a $v$. A única exceção é quando $u$ é a raiz da árvore de DFS. Neste contexto, $u$ é um ponto de articulação se e somente se possui $2$ ou mais vizinhos.
+
+
+{% highlight cpp %}
+{% include_relative src/articulation-point.cpp %}
+{% endhighlight %}
+
+
+
+
+### Detecção de Pontes
+
+Uma ponte, no contexto de grafos não-direcionados, é uma aresta cuja sua retirada aumenta o número de componentes conexas do grafo.
+
+Para detectar pontes, é necessário fazer uma minúscula alteração no código anterior.
+Supondo que $v$ é vizinho de $u$ e $\mathtt{dfs\\_low[v]} >\mathtt{dfs\\_num[u]}$, é correto dizer que $v$ não consegue alcançar $u$ através de outro caminho, então, se a aresta $(u,v)$ for removida do grafo, $v$ passa a não conseguir alcançar $u$ e temos um aumento no número de componentes conexas.
+
+Atualizando o algoritmo anterior para o discutido agora, temos:
+
+{% highlight cpp %}
+{% include_relative src/bridge-detection.cpp %}
+{% endhighlight %}
+
+
+
 
 
 ## Árvore Espalhada Mínima

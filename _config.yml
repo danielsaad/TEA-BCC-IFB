@@ -16,9 +16,9 @@ mathjax: true
 syntax_highlighter: pygments
 # About/contact
 author:
-  name:              Mark Otto
-  url:               https://twitter.com/mdo
-  email:             markdotto@gmail.com
+  name:              Daniel Saad Nogueira Nunes
+  url:               https://danielsaad.com
+  email:             daniel.nunes@ifb.ebu.br
 
 # Custom vars
 version:             1.0.0
