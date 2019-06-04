@@ -234,7 +234,19 @@ Atualizando o algoritmo anterior para o discutido agora, temos:
 
 ### Algoritmo de Kruskal
 
+{% highlight cpp %}
+{% include_relative src/union-find.cpp %}
+{% endhighlight %}
+
+{% highlight cpp %}
+{% include_relative src/kruskal.cpp %}
+{% endhighlight %}
+
 ### Algoritmo de Prim
+
+{% highlight cpp %}
+{% include_relative src/prim.cpp %}
+{% endhighlight %}
 
 ## Menor Caminho
 
