@@ -25,7 +25,7 @@ int kruskal(vector<int,ii>& edges, int n){
          * distintas, a aresta tem que estar na árvore espalhada
          * mínima
          */
-        if(uf.is_same_set(edges[i].second.first,edges[i].second.second)){
+        if(!uf.is_same_set(edges[i].second.first,edges[i].second.second)){
             // Adiciona o peso da aresta no custo da MST
             cost += edges[i].first;
             // Une os dois vértices em uma mesma componente conexa
