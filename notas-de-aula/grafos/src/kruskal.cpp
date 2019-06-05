@@ -12,7 +12,7 @@ using ii = pair<int,int>;
  * @param n número de vértices do grafo
  * @return int o peso da árvore espalhada mínima
  */
-int kruskal(vector<int,ii>& edges, int n){
+int kruskal(vector<pair<int,ii>>& edges, int n){
     int cost = 0;
     // Ordena pelo peso
     sort(edges.begin(),edges.end());
