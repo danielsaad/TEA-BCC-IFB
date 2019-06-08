@@ -250,6 +250,23 @@ Atualizando o algoritmo anterior para o discutido agora, temos:
 
 ## Menor Caminho
 
+### Dijkstra
 
+{% highlight cpp %}
+{% include_relative src/dijkstra.cpp %}
+{% endhighlight %}
+
+### Bellman-Ford
+
+
+{% highlight cpp %}
+{% include_relative src/bellman-ford.cpp %}
+{% endhighlight %}
+
+### Floyd-Warshall
+
+{% highlight cpp %}
+{% include_relative src/floyd-warshall.cpp %}
+{% endhighlight %}
 
 ## Leituras Recomendadas
