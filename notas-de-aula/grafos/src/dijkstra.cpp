@@ -34,6 +34,8 @@ void dijkstra(vector<vii>& g,int u){
     while(!pq.empty()){
         // Obtém o próximo nó de menor custo
         int v = pq.top().second;
+        // Remove o nó da fila de prioridades
+        pq.pop();
         // Se o nó já foi processado, pule esta iteração
         if(processed[v]){ 
             continue;
