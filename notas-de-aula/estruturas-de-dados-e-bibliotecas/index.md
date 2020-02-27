@@ -126,8 +126,8 @@ A figura a seguir ilustra uma Heap.
 Como se trata de uma árvore binária completa, é possível representar uma Heap através de um vetor. A navegação desta árvore virtual através de uma aritmética simples. Se um nó ocupa o índice $i$ do vetor, temos:
 
 - O pai ocupa a posição $(i-1)/2$.
-- O filho da esquerda ocupa a posição $(i+1)*2$.
-- O filho da direita ocupa a posição $(i+2)*2$.
+- O filho da esquerda ocupa a posição $(i*2) +1$.
+- O filho da direita ocupa a posição $(i*2) + 2$.
 
 Usando esta representação, é possível representar a árvore anterior pelo seguinte vetor:
 
