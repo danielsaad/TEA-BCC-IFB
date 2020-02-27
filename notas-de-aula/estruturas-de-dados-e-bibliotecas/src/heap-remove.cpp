@@ -2,6 +2,7 @@ template<typename T>
 void heap_remove(vector<T>& v){
     int root = 0;
     int largest;
+    std::swap(v[0],v.back());
     // Enquanto não for uma folha
     while(root<v.size()/2){
         int l,r;
