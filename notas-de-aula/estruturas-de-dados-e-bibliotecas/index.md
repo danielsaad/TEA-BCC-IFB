@@ -149,7 +149,7 @@ Para inserir o processo inverso é feito: o novo elemento é adicionado no final
 
 
 {% highlight cpp %}
-{% include_relative src/heapify_bottom_up %}
+{% include_relative src/heapify_bottom_up.cpp %}
 {% endhighlight %}
 
 {% highlight cpp %}
