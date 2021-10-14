@@ -142,7 +142,7 @@ Para remover o elemento de maior precedência, trocamos ele com a última folha 
 {% endhighlight %}
 
 {% highlight cpp %}
-{% include_relative src/heap_remove.cpp %}
+{% include_relative src/heap-remove.cpp %}
 {% endhighlight %}
 
 Para inserir o processo inverso é feito: o novo elemento é adicionado no final do vetor como uma folha e ele é trocado com o pai até que ele atinja a posição $0$ (raiz) ou até que ele tenha menor precedência que o seu pai, conforme ilustrado pelos códigos a seguir.
