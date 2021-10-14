@@ -30,9 +30,9 @@ int boolean_knapsack(vector<int>& v, vector<int>& w,int W){
         for(int j=0;j<=W;j++){
             dp[cur][j] = dp[last][j];
             if(j>=w[i])
-                dp[cir][j] = max(dp[cur][j],dp[last][j-w[i]]+v[i])
+                dp[cur][j] = max(dp[cur][j],dp[last][j-w[i]]+v[i])
         }
-        swap(cur,j);
+        swap(cur,last);
     }
     /*** 
      * A solução ótima tem que estar na célula que considera todos os 

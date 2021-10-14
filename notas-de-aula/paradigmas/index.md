@@ -245,7 +245,7 @@ Neste problema, mas uma vez ordenar faz sentido. Ordena-se a lista de alturas e 
 
 Para ilustrar o conceito de Programação Dinâmica, utilizaremos um exemplo do problema [UVa 11450](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=2445).
 
-Este problema é sobre compras de paças de vestuário para ir a um casamento. Existe $C$ ($1\leq C \leq 20$) tipos de peças de roupa diferentes e $M$ ($1\leq M \leq 200$) o montante disponível. Para cada um dos $C$ tipos de peça, existe um número $K$ ($1\leq K \leq 20$) de peças daquele tipo, cada um com uma descrição de preço. O objetivo é gastar o máximo possível, comprando exatamente uma peça de cada tipo, sem exceder uma quantia $M$ ($1\leq M \leq 200$)
+Este problema é sobre compras de peças de vestuário para ir a um casamento. Existe $C$ ($1\leq C \leq 20$) tipos de peças de roupa diferentes e $M$ ($1\leq M \leq 200$) o montante disponível. Para cada um dos $C$ tipos de peça, existe um número $K$ ($1\leq K \leq 20$) de peças daquele tipo, cada um com uma descrição de preço. O objetivo é gastar o máximo possível, comprando exatamente uma peça de cada tipo, sem exceder uma quantia $M$ ($1\leq M \leq 200$)
 
 A solução deverá indicar qual o valor máximo gasto, ou a impossibilidade de gastar um valor menor ou igual a $M$.
 
@@ -291,7 +291,7 @@ Como uma entrada pode ter no máximo $C = 20$ tipos de peça e cada tipo de peç
 Podemos perceber que o problema tem duas propriedades interessantes.
 
 1. Subestrutura ótima: a solução para o subproblema é parte da solução do problema maior. Isto é, se o $i$-ésimo elemento do $k$-ésimo tipo  tipo de peça está na solução, a solução do subproblema sem a peça escolhida tem que ser ótima. 
-2. O problema tem sobreposição de subproblemas. O espaço de busca $20^20$ possui muitos subproblemas que se sobrepoem.
+2. O problema tem sobreposição de subproblemas. O espaço de busca $20^{20}$ possui muitos subproblemas que se sobrepõem.
 
 O item 2. é chave para as soluções baseadas em DP. Como existe sobreposição de subproblemas, podemos trocar espaço por tempo. Sempre que um subproblema é resolvido, armazenamos a sua solução e, no caso de sua recorrência, o valor já computado é utilizado.
 
@@ -316,7 +316,7 @@ Como estamos referenciado uma única célula, podemos deixar o código mais enxu
 Vamos modelar o problema da seguinte forma: a solução de $S(i,m)$ nos diz se é possível ter o montante $m$ restante após comprar uma peça de cada um dos $i+1$ primeiros tipos. Claramente, $S(0,m)$ é verdadeiro sempre que $M-x\geq 0$, em que $x$ é o preço dos items de tipo $0$.
 
 Suponha agora que tenhamos $S(i,m)$ computado para todo $0\leq i < C$ e $0\leq m \leq M$.
-Caso seja possível chegar no montante final $m$ após utilizar os $i$ primeiros tipos, tentamos incluir as peças do $i+1$ primeiro tipo na solução. Para cada valor das peças  tipo $i+1$, verificamos se o montante $m$ de $S(i,m)$ que sobrou é suficiente para incluir a peça, se for possível, então $S(i+1,m-x)$ tem que ser verdadeiro, em que $x$ é o valor da peça.
+Caso seja possível chegar no montante final $m$ após utilizar os $i$ primeiros tipos, tentamos incluir as peças do $i+1$-ésimo primeiro tipo na solução. Para cada valor das peças  de tipo $i+1$, verificamos se o montante $m$ de $S(i,m)$ que sobrou é suficiente para incluir a peça, se for possível, então $S(i+1,m-x)$ tem que ser verdadeiro, em que $x$ é o valor da peça.
 
 Resumindo o discutido em uma única relação de recorrência, temos:
 
@@ -330,7 +330,7 @@ Isso gera a seguinte solução.
 {% endhighlight %}
 
 
-É fácil ver que, para a computação da $i$-ésima linha desta tabela, só precisamos olhar para a linha anterior. Então poderíamos economizar espaço e utilizar uma tabela com duas linhas, uma para a solução $i-1$-ésimo item e uma para a solução considerando o $i$-ésimo item.
+É fácil ver que, para a computação da $i$-ésima linha desta tabela, só precisamos olhar para a linha anterior. Então poderíamos economizar espaço e utilizar uma tabela com duas linhas, uma para a solução do $i-1$-ésimo item e uma para a solução considerando o $i$-ésimo item.
 
 
 
@@ -520,7 +520,7 @@ T(i,j) = \left\{
 $$
 
 
-A interpretação desta equação é $T(i,j)$ é o número mínimo de moedas para pagar o valor $j$ considerando apenas as moedas $v_0,\ldots,v_i$. O caso base, $j=0$ requer $0$ moedas, uma vez que o valor a ser pago é nulo.  Considerando apenas a primeira moeda, quando $i=0$, só conseguimos pagar quando o valor $j$ é divisível por $v_0$;  neste caso, utiliza-se $\frac{j}{v_0}$ moedas;   caso contrário não há solução, simbolizado com o valor $\infty$. Para o caso geral, a solução pode: não utilizar a moeda $v_i$, neste caso a solução encontra-se em $T(i-1,j)$; utilizar a moeda $v_i$, neste caso a solução encontra-se em $T(i,j-v[i])$ e devemos adicionar mais uma moeda a solução, desde que $j\geq v[i]$. O segundo caso, diferentemente do Problema da Mochila Booleana, recupera a solução de  $T(i,j-v[i])$ e não de $T(i-1,j-v[i])$, uma vez que adimitimos repetição da $i$-ésima moeda.
+A interpretação desta equação é $T(i,j)$ é o número mínimo de moedas para pagar o valor $j$ considerando apenas as moedas $v_0,\ldots,v_i$. O caso base, $j=0$ requer $0$ moedas, uma vez que o valor a ser pago é nulo.  Considerando apenas a primeira moeda, quando $i=0$, só conseguimos pagar quando o valor $j$ é divisível por $v_0$;  neste caso, utiliza-se $\frac{j}{v_0}$ moedas;   caso contrário não há solução, simbolizado com o valor $\infty$. Para o caso geral, a solução pode: não utilizar a moeda $v_i$, neste caso a solução encontra-se em $T(i-1,j)$; utilizar a moeda $v_i$, neste caso a solução encontra-se em $T(i,j-v[i])$ e devemos adicionar mais uma moeda a solução, desde que $j\geq v[i]$. O segundo caso, diferentemente do Problema da Mochila Booleana, recupera a solução de  $T(i,j-v[i])$ e não de $T(i-1,j-v[i])$, uma vez que admitimos repetição da $i$-ésima moeda.
 
 Isto leva ao seguinte código.
 

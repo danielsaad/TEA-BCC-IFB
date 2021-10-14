@@ -14,7 +14,7 @@ void print_vector(vector<T>& v){
 int main(){
 	// declara um vetor sem elementos
 	vector<int> empty_vector(); 
-	// declara um vetor de 100 posições inicializadas com 1
+	// declara um vetor de 3 posições inicializadas com 1
 	vector<int> v(3,1); 
 	// declara um vetor contendo os números inteiros de 1 a 5
 	vector<int> v2 = {1,2,3,4,5}; 
@@ -27,7 +27,7 @@ int main(){
 	// Remove o último elemento de v (1,1,1,3)
 	v.pop_back(); 
 
-	// Redimensiona v2 para 100 elementos. 
+	// Redimensiona v2 para 10 elementos. 
 	v2.resize(10); 
 
 	// Imprime o primeiro elemento do vetor v (1)

@@ -1,7 +1,7 @@
 
 int shop(int current_m, int idx){
     if(current_m<0){
-        /*** Caso base, retonamos um inteiro negativo grande caso o 
+        /*** Caso base, retornamos um inteiro negativo grande caso o 
          * montante atual seja negativo 
          ***/
         return numeric_limits<int>::min();

@@ -17,7 +17,7 @@ Estruturas de dados proveem meios de organizar e manipular informações de mane
 
 ### Vetores Estáticos
 	
-Vetores estáticos correspondem a uma sequência de dados de mesmo tipo. O tamanho deles geralmente é definido na declaração. É possível declarar vetores de uma, duas, três ou até quatro dimensões com facilidade. Quando se sabe de antemão o tamanho máximo de uma entrada, é uma estrutura que pode ser atualizada sem problemas.
+Vetores estáticos correspondem a uma sequência de dados de mesmo tipo. O tamanho deles geralmente é definido na declaração. É possível declarar vetores de uma, duas, três ou até quatro dimensões com facilidade. Quando se sabe de antemão o tamanho máximo de uma entrada, é uma estrutura que pode ser utilizada sem problemas.
 
 
 ### Vetores Dinâmicos 	
@@ -133,16 +133,24 @@ Usando esta representação, é possível representar a árvore anterior pelo se
 
 ![Heap em vetor](figures/heap-2.png)
 
-A grande vantagem de uma heap é que o elemento de maior precedência encontra-se na raiz da árvore, ou seja, na posição $0$ do vetor.  Assim, dado que um vetor tenha a propiedade de heap, é possível encontrar o elemento de maior precedência em tempo $O(1)$.
+A grande vantagem de uma heap é que o elemento de maior precedência encontra-se na raiz da árvore, ou seja, na posição $0$ do vetor. Assim, dado que um vetor tenha a propiedade de heap, é possível encontrar o elemento de maior precedência em tempo $O(1)$.
 
-Para remover o elemento de maior precedência, troca-se a raiz da árvore com o maior dos seus dois filhos até que uma folha seja atingida, o que possibilita remover o elemento. Isso é exemplificado pelo seguinte código:
+Para remover o elemento de maior precedência, trocamos ele com a última folha e, partindo da raiz, trocamos com o maior dos seus filhos até que isto não seja mais possível. Isso é exemplificado pelos seguintes códigos:
 
 {% highlight cpp %}
-{% include_relative src/heap-remove.cpp %}
+{% include_relative src/heapify_top_down.cpp %}
 {% endhighlight %}
 
-Para inserir o processo inverso é feito: o novo elemento é adicionado no final do vetor como uma folha e ele é trocado com o pai até que ele atinja a posição $0$ ou até que ele tenha menor precedência que o seu pai, conforme ilustrado pelo código a seguir.
+{% highlight cpp %}
+{% include_relative src/heap_remove.cpp %}
+{% endhighlight %}
 
+Para inserir o processo inverso é feito: o novo elemento é adicionado no final do vetor como uma folha e ele é trocado com o pai até que ele atinja a posição $0$ (raiz) ou até que ele tenha menor precedência que o seu pai, conforme ilustrado pelos códigos a seguir.
+
+
+{% highlight cpp %}
+{% include_relative src/heapify_bottom_up %}
+{% endhighlight %}
 
 {% highlight cpp %}
 {% include_relative src/heap-insert.cpp %}
