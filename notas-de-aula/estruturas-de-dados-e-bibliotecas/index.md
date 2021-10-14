@@ -187,7 +187,7 @@ O acesso ao elemento de maior precedência leva tempo constante: basta acessar a
 |:-----------:|:------------:|
 |   Operação  | Complexidade |
 | `push_heap` |     $O(\lg n)$     |
-| `pop_back`  |     $O(\lg n)$     |
+| `pop_heap`  |     $O(\lg n)$     |
 | `front`        |     $O(1)$     |
 
 
