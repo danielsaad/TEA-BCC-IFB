@@ -156,6 +156,14 @@ Para inserir o processo inverso é feito: o novo elemento é adicionado no final
 {% include_relative src/heap-insert.cpp %}
 {% endhighlight %}
 
+Para transformar um vetor em uma heap, para que as operações supracitadas possam ser aplicadas, podemos simplesmente examinar os elementos, em ordem decrescente de altura, aplicando o procedimento de trocá-los com os seus filhos sempre que tiverem menor precedência, como abaixo:
+
+{% highlight cpp %}
+{% include_relative src/make_heap.cpp %}
+{% endhighlight %}
+
+
+
 É possível utilizar esta estrutura de dados através do cabeçalho `<algorithm>`.
 Os métodos mais notáveis são:
 
