@@ -360,9 +360,9 @@ Estes operadores aplicam uma operação lógica em um inteiro, no caso de um ope
 
 Os operadores de `>>` e `<<` servem para deslocar os bits posições à esquerda ou a direita.
 
-Por exemplo: `  00101010 >> 1 = 00010101 (binário) = 21 (decimal)` e  `  00101010 << 2 = 10101000 (binário) = 168 (decimal)`.
+Por exemplo: `00101010 >> 1 = 00010101 (binário) = 21 (decimal)` e  ` 00101010 << 2 = 10101000 (binário) = 168 (decimal)`.
 
-Efetivamente, deslocar $i$ posições à esquerda significa realizar a divisão inteira por $2^i$. Ao deslocar $i$ posições à direita,  o resultado equivale a uma multiplicação por $2^i$.
+Efetivamente, deslocar $i$ posições à esquerda significa realizar a uma multiplicação por $2^i$. Ao deslocar $i$ posições à direita, o resultado equivale a uma divisão inteira por $2^i$.
 
 Considerando o inteiro de 8 bits `x = 42 (decimal) = 00101010 (binário)`, ao aplicar o operador `~` sobre ele, teríamos:
 
